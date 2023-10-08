@@ -123,7 +123,6 @@ int main(void)
 		  }
 		  second++;
 		  updateClockBuffer(hour, minute);
-		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  setTimer1(100);
 	  }
 
@@ -135,6 +134,7 @@ int main(void)
 
 	  if(timer3_flag == 1){
 		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  setTimer3(100);
 	  }
 
