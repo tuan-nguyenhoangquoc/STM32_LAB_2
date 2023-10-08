@@ -14,7 +14,7 @@ int led_buffer[4] = {1, 2, 3, 4};
 const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 0;
 uint8_t matrix_buffer[8] = {0xFB, 0xF5, 0xEE, 0xEE, 0xE0, 0xEE, 0xEE, 0xEE};
-uint8_t shift_matrix = 0;
+int shift_matrix = 0;
 void display7SEG(int num){
 	switch(num){
 	case 0:
@@ -154,7 +154,7 @@ void updateClockBuffer(int hour, int minute){
 	led_buffer[3] = minute % 10;
 }
 
-void update_shift(uint8_t shift){
+void update_shift(int shift){
 	shift_matrix = shift;
 }
 

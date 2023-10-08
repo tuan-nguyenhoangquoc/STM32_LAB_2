@@ -20,5 +20,5 @@ void display7SEG(int num);
 void update7SEG(int index);
 void updateClockBuffer(int hour, int minute);
 void updateLEDMatrix(int index);
-
+void update_shift(int shift);
 #endif /* INC_LEDS_H_ */
