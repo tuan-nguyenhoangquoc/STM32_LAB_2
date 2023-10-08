@@ -93,7 +93,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
 
   //Initial state
-  setTimer1(50);
+  setTimer1(1);
   setTimer2(100);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);

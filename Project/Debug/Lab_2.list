@@ -682,8 +682,8 @@ int main(void)
  80005b0:	f001 f9ca 	bl	8001948 <HAL_TIM_Base_Start_IT>
 
   //Initial state
-  setTimer1(50);
- 80005b4:	2032      	movs	r0, #50	; 0x32
+  setTimer1(1);
+ 80005b4:	2001      	movs	r0, #1
  80005b6:	f000 f961 	bl	800087c <setTimer1>
   setTimer2(100);
  80005ba:	2064      	movs	r0, #100	; 0x64
