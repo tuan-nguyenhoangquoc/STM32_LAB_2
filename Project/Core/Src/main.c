@@ -110,10 +110,8 @@ int main(void)
   while (1)
   {
 	  if(timer1_flag == 1){
-	  		  setTimer1(50);
 	  		  num++;
 	  		  num = num % 4;
-	  		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	  		  switch(num){
 	  		  case 0:
 	  			  HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
@@ -138,12 +136,13 @@ int main(void)
 	  		  default:
 	  			  break;
 	  		  }
-
+	  		  setTimer1(50);
 	  }
 
 	  if(timer2_flag == 1){
-	  		  setTimer2(100);
+		  	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	  		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+	  		  setTimer2(100);
 	  	  }
     /* USER CODE END WHILE */
 
