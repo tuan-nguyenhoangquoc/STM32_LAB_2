@@ -101,6 +101,7 @@ int main(void)
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   HAL_GPIO_WritePin(_DOT_GPIO_Port, _DOT_Pin, SET);
+  int num = 1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,15 +109,17 @@ int main(void)
   while (1)
   {
 	  if(timer1_flag == 1){
-	  		  setTimer1(25);
-	  		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	  		  update7SEG(index_led++);
-	  		  index_led = index_led % MAX_LED;
+		  led_buffer[index_led] = num++;
+		  num = num % 10;
+	      update7SEG(index_led++);
+	      index_led = index_led % MAX_LED;
+	      setTimer1(25);
 	  }
 
 	  if(timer2_flag == 1){
-	  		  setTimer2(100);
-	  		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+	      HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	      HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+	      setTimer2(100);
 	  }
 
     /* USER CODE END WHILE */
