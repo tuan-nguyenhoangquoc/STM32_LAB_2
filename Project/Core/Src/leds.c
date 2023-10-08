@@ -216,5 +216,5 @@ void updateLEDMatrix(int index){
 			HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
 			break;
 	}
-	convert_buffer(matrix_buffer[index_led_matrix], shift_matrix);
+	convert_buffer(matrix_buffer[index], shift_matrix);
 }

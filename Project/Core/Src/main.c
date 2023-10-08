@@ -140,8 +140,7 @@ int main(void)
 	  }
 
 	  if(timer4_flag == 1){
-		  updateLEDMatrix(index_led_matrix);
-		  index_led_matrix++;
+		  updateLEDMatrix(index_led_matrix++);
 		  index_led_matrix = index_led_matrix % MAX_LED_MATRIX;
 		  setTimer4(1);
 	  }
