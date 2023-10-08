@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   00009c55  00000000  00000000  00041a7c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000822ef  00000000  00000000  0004b6d1  2**0
+ 18 .debug_str    000822eb  00000000  00000000  0004b6d1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000cd9c0  2**0
+ 19 .comment      00000053  00000000  00000000  000cd9bc  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000027ac  00000000  00000000  000cda14  2**2
+ 20 .debug_frame  000027ac  00000000  00000000  000cda10  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -878,51 +878,51 @@ void convert_buffer(uint8_t value, int shift){
  800078e:	bf00      	nop
  8000790:	40010800 	.word	0x40010800
 
-08000794 <clearRows>:
+08000794 <clear>:
 
 
-void clearRows(){
+void clear(){
  8000794:	b580      	push	{r7, lr}
  8000796:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, SET);
  8000798:	2201      	movs	r2, #1
  800079a:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800079e:	4817      	ldr	r0, [pc, #92]	; (80007fc <clearRows+0x68>)
+ 800079e:	4817      	ldr	r0, [pc, #92]	; (80007fc <clear+0x68>)
  80007a0:	f000 fe7e 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, SET);
  80007a4:	2201      	movs	r2, #1
  80007a6:	f44f 7100 	mov.w	r1, #512	; 0x200
- 80007aa:	4814      	ldr	r0, [pc, #80]	; (80007fc <clearRows+0x68>)
+ 80007aa:	4814      	ldr	r0, [pc, #80]	; (80007fc <clear+0x68>)
  80007ac:	f000 fe78 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, SET);
  80007b0:	2201      	movs	r2, #1
  80007b2:	f44f 6100 	mov.w	r1, #2048	; 0x800
- 80007b6:	4811      	ldr	r0, [pc, #68]	; (80007fc <clearRows+0x68>)
+ 80007b6:	4811      	ldr	r0, [pc, #68]	; (80007fc <clear+0x68>)
  80007b8:	f000 fe72 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, SET);
  80007bc:	2201      	movs	r2, #1
  80007be:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 80007c2:	480e      	ldr	r0, [pc, #56]	; (80007fc <clearRows+0x68>)
+ 80007c2:	480e      	ldr	r0, [pc, #56]	; (80007fc <clear+0x68>)
  80007c4:	f000 fe6c 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, SET);
  80007c8:	2201      	movs	r2, #1
  80007ca:	f44f 5180 	mov.w	r1, #4096	; 0x1000
- 80007ce:	480b      	ldr	r0, [pc, #44]	; (80007fc <clearRows+0x68>)
+ 80007ce:	480b      	ldr	r0, [pc, #44]	; (80007fc <clear+0x68>)
  80007d0:	f000 fe66 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, SET);
  80007d4:	2201      	movs	r2, #1
  80007d6:	f44f 5100 	mov.w	r1, #8192	; 0x2000
- 80007da:	4808      	ldr	r0, [pc, #32]	; (80007fc <clearRows+0x68>)
+ 80007da:	4808      	ldr	r0, [pc, #32]	; (80007fc <clear+0x68>)
  80007dc:	f000 fe60 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, SET);
  80007e0:	2201      	movs	r2, #1
  80007e2:	f44f 4180 	mov.w	r1, #16384	; 0x4000
- 80007e6:	4805      	ldr	r0, [pc, #20]	; (80007fc <clearRows+0x68>)
+ 80007e6:	4805      	ldr	r0, [pc, #20]	; (80007fc <clear+0x68>)
  80007e8:	f000 fe5a 	bl	80014a0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, SET);
  80007ec:	2201      	movs	r2, #1
  80007ee:	f44f 4100 	mov.w	r1, #32768	; 0x8000
- 80007f2:	4802      	ldr	r0, [pc, #8]	; (80007fc <clearRows+0x68>)
+ 80007f2:	4802      	ldr	r0, [pc, #8]	; (80007fc <clear+0x68>)
  80007f4:	f000 fe54 	bl	80014a0 <HAL_GPIO_WritePin>
 }
  80007f8:	bf00      	nop
@@ -935,8 +935,8 @@ void updateLEDMatrix(int index){
  8000802:	b082      	sub	sp, #8
  8000804:	af00      	add	r7, sp, #0
  8000806:	6078      	str	r0, [r7, #4]
-	clearRows();
- 8000808:	f7ff ffc4 	bl	8000794 <clearRows>
+	clear();
+ 8000808:	f7ff ffc4 	bl	8000794 <clear>
  800080c:	687b      	ldr	r3, [r7, #4]
  800080e:	2b07      	cmp	r3, #7
  8000810:	d84a      	bhi.n	80008a8 <updateLEDMatrix+0xa8>

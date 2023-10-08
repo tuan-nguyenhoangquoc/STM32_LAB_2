@@ -178,7 +178,7 @@ void convert_buffer(uint8_t value, int shift){
 }
 
 
-void clearRows(){
+void clear(){
 	HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, SET);
 	HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, SET);
 	HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, SET);
@@ -189,7 +189,7 @@ void clearRows(){
 	HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, SET);
 }
 void updateLEDMatrix(int index){
-	clearRows();
+	clear();
 	switch(index){
 		case 0:
 			HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, RESET);
