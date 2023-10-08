@@ -104,7 +104,6 @@ int main(void)
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   HAL_GPIO_WritePin(_DOT_GPIO_Port, _DOT_Pin, SET);
   int hour = 15 , minute = 8 , second = 50;
-  int index = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -141,8 +140,8 @@ int main(void)
 	  }
 
 	  if(timer4_flag == 1){
-		  updateLEDMatrix(index++);
-		  index = index % MAX_LED_MATRIX;
+		  updateLEDMatrix(index_led_matrix++);
+		  index_led_matrix = index_led_matrix % MAX_LED_MATRIX;
 		  setTimer4(1);
 	  }
     /* USER CODE END WHILE */
