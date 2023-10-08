@@ -94,13 +94,15 @@ int main(void)
 
   //Initial state
   setTimer1(1);
-  setTimer2(100);
+  setTimer2(1);
+  setTimer3(100);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   HAL_GPIO_WritePin(_DOT_GPIO_Port, _DOT_Pin, SET);
+  int hour = 15 , minute = 8 , second = 50;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,15 +110,32 @@ int main(void)
   while (1)
   {
 	  if(timer1_flag == 1){
-	  		  setTimer1(25);
-	  		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	  		  update7SEG(index_led++);
-	  		  index_led = index_led % MAX_LED;
+		  if(second >= 60){
+			  second = 0;
+			  minute++;
+		  }
+		  if(minute >= 60){
+			  minute = 0;
+			  hour++;
+		  }
+		  if(hour >= 24){
+			  hour = 0;
+		  }
+		  second++;
+		  updateClockBuffer(hour, minute);
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		  setTimer1(100);
 	  }
 
 	  if(timer2_flag == 1){
-	  		  setTimer2(100);
-	  		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+		  update7SEG(index_led);
+		  index_led = (index_led + 1) % MAX_LED;
+		  setTimer2(25);
+	  }
+
+	  if(timer3_flag == 1){
+		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+		  setTimer3(100);
 	  }
 
     /* USER CODE END WHILE */
