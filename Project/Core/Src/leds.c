@@ -13,8 +13,8 @@ int led_buffer[4] = {1, 2, 3, 4};
 
 const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 0;
-uint8_t matrix_buffer[8] = {0xFB, 0xF5, 0xEE, 0xEE, 0xEE, 0xE0, 0xEE, 0xEE};
-
+uint8_t matrix_buffer[8] = {0xFB, 0xF5, 0xEE, 0xEE, 0xE0, 0xEE, 0xEE, 0xEE};
+uint8_t shift_matrix = 0;
 void display7SEG(int num){
 	switch(num){
 	case 0:
@@ -154,6 +154,10 @@ void updateClockBuffer(int hour, int minute){
 	led_buffer[3] = minute % 10;
 }
 
+void update_shift(uint8_t shift){
+	shift_matrix = shift;
+}
+
 void convert_buffer(uint8_t value, uint8_t shift){
 	uint8_t temp = (value >> (uint8_t)((shift + 0) % MAX_LED_MATRIX)) & 1;
 	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, temp);
@@ -212,5 +216,5 @@ void updateLEDMatrix(int index){
 			HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
 			break;
 	}
-	convert_buffer(matrix_buffer[index], 0);
+	convert_buffer(matrix_buffer[index], shift_matrix);
 }
