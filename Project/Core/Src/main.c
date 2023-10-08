@@ -102,7 +102,7 @@ int main(void)
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   HAL_GPIO_WritePin(_DOT_GPIO_Port, _DOT_Pin, SET);
   int num = 1;
-  display7SEG(num);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,41 +110,20 @@ int main(void)
   while (1)
   {
 	  if(timer1_flag == 1){
-	  		  setTimer1(50);
-	  		  num++;
-	  		  num = num % 4;
-	  		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	  		  switch(num){
-	  		  case 0:
-	  			  HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
-	  			  HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
-	  			  display7SEG(num);
-	  			  break;
-	  		  case 1:
-	  			  HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
-	  			  HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
-	  			  display7SEG(num);
-	  			  break;
-	  		  case 2:
-	  			  HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
-	  			  HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
-	  			  display7SEG(num);
-	  			  break;
-	  		  case 3:
-	  			  HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
-	  			  HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
-	  			  display7SEG(num);
-	  			  break;
-	  		  default:
-	  			  break;
-	  		  }
-
+		  led_buffer[index_led] = num++;
+		  num = num % 10;
+		  update7SEG(index_led++);
+		  index_led = index_led % MAX_LED;
+		  setTimer1(50);
 	  }
 
 	  if(timer2_flag == 1){
-	  		  setTimer2(100);
-	  		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
-	  	  }
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		  HAL_GPIO_TogglePin(_DOT_GPIO_Port, _DOT_Pin);
+		  setTimer2(100);
+	  }
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
