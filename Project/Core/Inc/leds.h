@@ -12,8 +12,12 @@ extern const int MAX_LED;
 extern int index_led;
 extern int led_buffer[4];
 
+extern const int MAX_LED_MATRIX;
+extern int index_led_matrix;
+
 void display7SEG(int num);
 void update7SEG(int index);
 void updateClockBuffer(int hour, int minute);
+void updateLEDMatrix(int index);
 
 #endif /* INC_LEDS_H_ */
