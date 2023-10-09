@@ -97,6 +97,7 @@ int main(void)
   setTimer2(1);
   setTimer3(100);
   setTimer4(1);
+  setTimer5(1);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
@@ -140,9 +141,13 @@ int main(void)
 	  }
 
 	  if(timer4_flag == 1){
-		  updateLEDMatrix(index_led_matrix++);
-		  index_led_matrix = index_led_matrix % MAX_LED_MATRIX;
+		  updateLEDMatrix(index_led_matrix);
 		  setTimer4(1);
+	  }
+	  if(timer5_flag == 1){
+		  index_led_matrix = index_led_matrix + 1;
+		  index_led_matrix = index_led_matrix % MAX_LED_MATRIX;
+		  setTimer5(2);
 	  }
     /* USER CODE END WHILE */
 
